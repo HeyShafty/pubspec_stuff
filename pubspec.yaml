@@ -1,0 +1,179 @@
+name: measureall
+description: MeasureAll.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# -----------------------------------------------------------------------------
+# TL;DR: 1.0.1+2 leads to
+# - Android: versionName = 1.0.1, versionCode = 2 (must be unique per project)
+# - iOS: CFBundleShortVersionString = 1.0.1, CFBundleVersion = 2
+# -----------------------------------------------------------------------------
+#
+# Simple case: one flavor, release both Android and iOS
+# -> Update the versionName
+# -> Increment the versionCode, then the PlayStore will never reject any build
+version: 2.2.0+60
+
+environment:
+  sdk: ">=2.9.0 <3.0.0"
+  flutter: ^1.22.6
+
+# Use this section for all the dependencies used by the application itself
+dependencies:
+  # Flutter
+  flutter:
+    sdk: flutter
+
+  # firebase
+  firebase_core: ^0.5.3
+  firebase_analytics: ^6.3.0
+  firebase_crashlytics: ^0.2.4
+  firebase_remote_config: ^0.4.3
+  firebase_performance: ^0.4.3
+
+  # logger
+  flutter_logger_android_like: ^1.0.1
+
+  # device preview
+  device_preview: ^0.4.8
+
+  # request
+  connectivity: '>=0.4.8+6 <2.0.0'
+  http: ^0.12.1
+  url_launcher: ^5.7.10
+
+  # widget
+  auto_size_text: ^2.1.0
+  flutter_statusbarcolor: ^0.2.3
+  fluttertoast: ^7.1.6
+  simple_animations: ^1.3.3
+  smooth_page_indicator: ^0.2.0
+
+  #pdf
+  pdf_render: ^0.69.0
+  flutter_pdf_split:
+    git:
+      url: https://github.com/lbaey/flutter_pdf_split.git
+      ref: features/background-android
+
+  # package info
+  package_info: '>=0.4.0+18 <2.0.0'
+
+  # color picker
+  flutter_colorpicker: ^0.3.5
+
+  # assets
+  flutter_launcher_icons: ^0.8.1
+  flutter_svg: ^0.19.0
+  charcode: ^1.1.3
+
+  # localization
+  intl: ^0.16.1
+  intl_utils: ^1.7.0
+  flutter_localizations:
+    sdk: flutter
+
+  # cupertino
+  cupertino_icons: ^0.1.3
+
+  # splash screen
+  flutter_native_splash: ^0.1.9
+
+  # data access
+  shared_preferences: '>=0.5.12+4 <2.0.0'
+  get_it: ^4.0.4
+  uuid: ^2.2.2
+
+  # Database
+  hive: ^1.4.4+1
+  hive_flutter: ^0.3.1
+
+  # FILES
+  # a fork of the lib with a better file management
+  flutter_absolute_path:
+    git:
+      url: https://github.com/Tudutu/flutter_absolute_path.git
+  # another fork by JCh but build on iOS failed
+  #  flutter_absolute_path:
+  #    git:
+  #      url: https://github.com/JeanChristopheMobizel/flutter_absolute_path.git
+
+  file_picker: ^2.0.11
+  # receive PDF from external apps
+  receive_sharing_intent: ^1.4.2
+
+  # hash
+  md5_plugin: ^1.0.2
+  # screenshot
+  native_screenshot: ^0.0.5
+  # flutter share
+  flutter_share: ^1.0.5
+  # path provider
+  path_provider: ^1.6.27
+  downloads_path_provider: ^0.1.0
+
+  # do not upgrade build runner, higher version depend on analyzer 0.40
+  build_runner: ^1.10.1
+
+  # permission handler
+  permission_handler: ^5.1.0+2
+
+  # in app purchase
+  in_app_purchase: ^0.3.4+16
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  r_flutter: ^0.6.0
+
+  hive_generator: ^0.7.2+1
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path_android: "lib/assets/app_icon/app_icon_android.png"
+  adaptive_icon_background: "lib/assets/app_icon/android_adaptive_background.png"
+  adaptive_icon_foreground: "lib/assets/app_icon/android_adaptive_foreground.png"
+  image_path_ios: "lib/assets/app_icon/app_icon_ios.png"
+
+flutter_native_splash:
+  image: "lib/assets/splash/splash.png"
+  color: "#ffffff"
+
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+
+  assets:
+    - lib/assets/
+    - lib/assets/fonts/
+    - lib/assets/images/
+
+  fonts:
+    - family: Regular
+      fonts:
+        - asset: lib/assets/fonts/PTSans-Regular.ttf
+    - family: Bold
+      fonts:
+        - asset: lib/assets/fonts/PTSans-Bold.ttf
+    - family: Italic
+      fonts:
+        - asset: lib/assets/fonts/PTSans-Italic.ttf
+    - family: BoldItalic
+      fonts:
+        - asset: lib/assets/fonts/PTSans-BoldItalic.ttf
+
+r_flutter:
+  asset_classes:
+    ".svg":
+      import: assets/assetClasses.dart
+      class: SvgFile
+    ".json":
+      import: assets/assetClasses.dart
+      class: JsonFile
+
+flutter_intl:
+  enabled: true
+  main_locale: fr
+
